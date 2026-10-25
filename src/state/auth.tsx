@@ -7,7 +7,9 @@ import React, {
 } from "react";
 import { supabase } from "@/services/supabase";
 
-const PASSWORD_RECOVERY_URL = "https://stavuno.pages.dev/reset-password";
+const PASSWORD_RECOVERY_URL =
+  process.env.EXPO_PUBLIC_PASSWORD_RECOVERY_URL ??
+  "http://localhost:8788/reset-password";
 
 type AuthContextValue = {
   userId?: string;

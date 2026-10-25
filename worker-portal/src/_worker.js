@@ -1,8 +1,3 @@
-const upstreamSupplierQuoteUrl =
-  'https://fjhgeudmcrbjpnduwhtb.supabase.co/functions/v1/supplier-quote';
-const legacyPublicHostname = 'stavebny-dennik-worker.pages.dev';
-const primaryPublicOrigin = 'https://stavuno.pages.dev';
-
 const htmlHeaders = {
   'Cache-Control': 'private, no-store, max-age=0',
   'Content-Type': 'text/html; charset=utf-8',
@@ -81,12 +76,11 @@ async function proxyPrivatePage(request, upstreamUrl) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    if (url.hostname === legacyPublicHostname) {
-      const destination = new URL(`${url.pathname}${url.search}`, primaryPublicOrigin);
-      return Response.redirect(destination, 308);
+    if (url.pathname === '/supplier-quote') {
+      if (!env.SUPPLIER_QUOTE_URL)
+        return new Response(unavailablePage(), { status: 503, headers: htmlHeaders });
+      return proxyPrivatePage(request, env.SUPPLIER_QUOTE_URL);
     }
-    if (url.pathname === '/supplier-quote')
-      return proxyPrivatePage(request, upstreamSupplierQuoteUrl);
     if (url.pathname === '/reset-password') {
       const response = await env.ASSETS.fetch(request);
       const headers = new Headers(response.headers);

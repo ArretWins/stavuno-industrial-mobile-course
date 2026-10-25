@@ -2,7 +2,11 @@ import Constants from "expo-constants";
 import { supportedCpuArchitectures } from "expo-device";
 
 export const APP_UPDATE_MANIFEST_URL =
-  "https://stavuno.pages.dev/app-version.json";
+  process.env.EXPO_PUBLIC_APP_UPDATE_MANIFEST_URL ??
+  "http://localhost:8788/app-version.json";
+
+const APP_UPDATE_DOWNLOAD_HOST =
+  process.env.EXPO_PUBLIC_APK_DOWNLOAD_HOST ?? "example.com";
 
 export type AppUpdateManifest = {
   version: string;
@@ -46,8 +50,8 @@ function isManifest(value: unknown): value is AppUpdateManifest {
     try {
       const url = new URL(rawUrl);
       if (url.protocol !== "https:" ||
-        url.hostname !== "fjhgeudmcrbjpnduwhtb.supabase.co" ||
-        !url.pathname.startsWith("/storage/v1/object/public/app-releases/")) return false;
+        url.hostname !== APP_UPDATE_DOWNLOAD_HOST ||
+        !url.pathname.endsWith(".apk")) return false;
     } catch {
       return false;
     }

@@ -13,11 +13,10 @@ enabled = true
 enabled = false
 
 [auth]
-site_url = "https://stavuno.pages.dev"
+site_url = "http://localhost:8788"
 additional_redirect_urls = [
-  "https://stavuno.pages.dev/**",
-  "https://stavebny-dennik-worker.pages.dev/**",
-  "stavebnydennik://**",
+  "http://localhost:8788/**",
+  "stavuno-course://**",
 ]
 enable_anonymous_sign_ins = true
 

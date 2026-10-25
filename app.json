@@ -19,9 +19,38 @@
         "android.permission.READ_EXTERNAL_STORAGE",
         "android.permission.WRITE_EXTERNAL_STORAGE"
       ],
-      "permissions": ["CAMERA"]
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION",
+        "CAMERA",
+        "RECORD_AUDIO"
+      ]
     },
-    "plugins": ["expo-image-picker", "expo-asset"],
+    "plugins": [
+      "./plugins/withOptionalCameraHardware",
+      "expo-sqlite",
+      "expo-image-picker",
+      "expo-location",
+      "expo-asset",
+      [
+        "expo-speech-recognition",
+        {
+          "microphonePermission": "Povoľte aplikácii Stavuno použiť mikrofón na hlasový návrh zápisu.",
+          "speechRecognitionPermission": "Povoľte aplikácii Stavuno prepísať hlas do textu.",
+          "androidSpeechServicePackages": [
+            "com.google.android.googlequicksearchbox",
+            "com.google.android.tts"
+          ]
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "color": "#2E7D32",
+          "defaultChannel": "requests"
+        }
+      ]
+    ],
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
@@ -29,4 +58,3 @@
     }
   }
 }
-

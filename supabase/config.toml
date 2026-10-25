@@ -1,0 +1,55 @@
+project_id = "stavuno-industrial-mobile-course"
+
+[api]
+enabled = true
+
+[db]
+major_version = 15
+
+[storage]
+enabled = true
+
+[storage.vector]
+enabled = false
+
+[auth]
+site_url = "https://stavuno.pages.dev"
+additional_redirect_urls = [
+  "https://stavuno.pages.dev/**",
+  "https://stavebny-dennik-worker.pages.dev/**",
+  "stavebnydennik://**",
+]
+enable_anonymous_sign_ins = true
+
+[auth.email]
+enable_confirmations = false
+max_frequency = "1m"
+otp_length = 8
+
+[auth.mfa.totp]
+enroll_enabled = true
+verify_enabled = true
+
+[functions.worker-checkin]
+verify_jwt = false
+
+[functions.generate-report]
+verify_jwt = true
+
+[functions.process-receipt-ocr]
+verify_jwt = true
+
+[functions.generate-receipt-report]
+verify_jwt = true
+
+[functions.worker-portal]
+verify_jwt = false
+
+[functions.supplier-quote]
+verify_jwt = false
+
+[functions.diary-approval]
+verify_jwt = false
+
+[functions.dispatch-notifications]
+verify_jwt = true

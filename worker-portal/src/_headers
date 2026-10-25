@@ -1,0 +1,30 @@
+/\*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: no-referrer
+  Permissions-Policy: camera=(), geolocation=(), microphone=()
+  Content-Security-Policy: default-src 'self'; connect-src 'self' https://*.supabase.co wss://*.supabase.co; script-src 'self' https://esm.sh; style-src 'self'; img-src 'self' data:; worker-src 'self'; manifest-src 'self'
+
+/config.js
+  Cache-Control: no-store
+
+/sw.js
+  Cache-Control: no-cache
+
+/app-version.json
+  Cache-Control: no-cache, no-store, must-revalidate
+  X-Content-Type-Options: nosniff
+
+/download.html
+  Cache-Control: no-cache
+
+/download.js
+  Cache-Control: no-cache
+
+/reset-password.html
+  Cache-Control: no-store
+
+/reset-password
+  Cache-Control: no-store
+
+/reset-password.js
+  Cache-Control: no-store

@@ -1,0 +1,32 @@
+{
+  "expo": {
+    "name": "Stavuno Course",
+    "slug": "stavuno-industrial-mobile-course",
+    "version": "0.1.0",
+    "newArchEnabled": false,
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "scheme": "stavuno-course",
+    "android": {
+      "package": "sk.stavuno.course",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#F8F5EF"
+      },
+      "blockedPermissions": [
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE"
+      ],
+      "permissions": ["CAMERA"]
+    },
+    "plugins": ["expo-image-picker", "expo-asset"],
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#F8F5EF"
+    }
+  }
+}
+

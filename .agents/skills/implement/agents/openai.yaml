@@ -1,0 +1,7 @@
+interface:
+  display_name: "Implement approved Stavuno step"
+  short_description: "Run implementer and independent verifier"
+  default_prompt: "Use $implement to execute one approved Stavuno implementation-plan step and verify the resulting diff."
+
+policy:
+  allow_implicit_invocation: false

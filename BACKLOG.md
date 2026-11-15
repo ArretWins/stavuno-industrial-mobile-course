@@ -218,7 +218,7 @@ Ako hodnotiteľ chcem vidieť špecifikáciu, návrh, implementáciu a dôkazy t
 - T-10.3: definovať implementer/verifier workflow;
 - T-10.4: zaznamenať výsledky overenia.
 
-**Stav:** In progress — dokumentácia a testy sú hotové, agent workflow sa pridáva v nasledujúcich commitoch.
+**Stav:** Configured — dokumentácia, custom agents a explicitný skill sú prítomné, syntakticky validované a nezávisle skontrolované. Prvé end-to-end vyvolanie `$implement` sa overí na najbližšej schválenej zmene, aby sa už dokončený krok neopakoval iba kvôli demonštrácii.
 
 ## Traceability
 

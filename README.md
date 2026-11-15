@@ -52,6 +52,22 @@ npm run build:worker-portal
 
 Prvý príkaz vykoná TypeScript kontrolu, kontrolu prekladov a textov a automatizované testy. Druhý vytvorí statický webový portál v ignorovanom priečinku `worker-portal/dist`.
 
+## Implementer → verifier workflow
+
+Repozitár obsahuje explicitne spúšťaný skill `$implement`. Codex načíta projektové pravidlá z `AGENTS.md`, implementačného agenta z `.codex/agents/implementer.toml` a nezávislého kontrolóra z `.codex/agents/verifier.toml`.
+
+Verifier je read-only na úrovni inštrukcií; vlastný oddelený sandbox nemá. Koordinátor preto porovná Git stav a diff pred jeho spustením a po dokončení. Neočakávaná zmena znamená `BLOCKED`.
+
+Príklad zadania:
+
+Syntax-only príklad pre budúcu schválenú zmenu:
+
+```text
+$implement <schválený Step, requirement alebo defect ID>
+```
+
+Workflow najprv vykoná schválený krok, potom odovzdá skutočný diff verifier agentovi s čerstvým kontextom. Skill sám nepovoľuje commit, push, deploy ani aplikovanie vzdialených migrácií.
+
 ## Databáza
 
 Migrácie sú v `supabase/migrations`. Pred aplikovaním na vzdialenú databázu ich treba najprv skontrolovať lokálne alebo príkazom dry-run. Serverové tajomstvá patria do prostredia Supabase, nie do mobilnej aplikácie ani GitHub repozitára.

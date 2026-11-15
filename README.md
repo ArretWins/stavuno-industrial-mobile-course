@@ -8,7 +8,9 @@ Projekt rieši praktický problém stavebných tímov: denné záznamy, fotograf
 
 - [project.md](./project.md) — problém, používatelia, MVP, non-goals a technológie;
 - [SPEC.md](./SPEC.md) — funkčná špecifikácia a akceptačné kritériá;
-- [DESIGN.md](./DESIGN.md) — UX, architektúra, bezpečnosť a testovacia stratégia.
+- [DESIGN.md](./DESIGN.md) — UX, architektúra, bezpečnosť a testovacia stratégia;
+- [BACKLOG.md](./BACKLOG.md) — initiative, epics, user stories a tasks;
+- [IMPLEMENTATION_PLAN.md](./IMPLEMENTATION_PLAN.md) — schválené kroky pre implementer → verifier workflow.
 
 ## Hlavné funkcie
 

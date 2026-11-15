@@ -1,5 +1,11 @@
 # Stavuno — dizajnový dokument
 
+**Status:** Approved baseline
+
+**Schválené:** 15. november 2026
+
+**Vykonateľný plán:** [IMPLEMENTATION_PLAN.md](./IMPLEMENTATION_PLAN.md)
+
 ## 1. Dizajnové princípy
 
 1. **Rýchly záznam v teréne.** Najčastejšie operácie musia byť dostupné bez dlhého formulára.
@@ -146,3 +152,7 @@ Konflikt sa v MVP rieši pravidlom poslednej potvrdenej zmeny pri bežných text
 - platené funkcie a limity bezplatnej verzie;
 - publikovanie v Google Play;
 - rozšírené schvaľovanie denných záznamov a exportov.
+
+## 11. Implementačný postup
+
+Implementácia sa vykonáva po samostatných krokoch definovaných v `IMPLEMENTATION_PLAN.md`. Každý krok obsahuje scope, súbory, úlohy, akceptačné kritériá a validačné príkazy. Po integrovanej validácii nasleduje nezávislá kontrola verifier agentom s čerstvým kontextom.

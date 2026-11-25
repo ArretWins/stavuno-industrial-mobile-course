@@ -77,6 +77,8 @@ Stavuno je mobilný stavebný denník pre malé a stredné stavebné tímy. Spá
 
 ## 4. Funkčné požiadavky
 
+Normatívne scenáre Given/When/Then a dôkazy pre všetky FR sú v [ACCEPTANCE.md](./ACCEPTANCE.md).
+
 | ID | Požiadavka | Priorita |
 | --- | --- | --- |
 | FR-01 | Registrácia, prihlásenie a obnova hesla e-mailom | Must |
@@ -105,14 +107,14 @@ Stavuno je mobilný stavebný denník pre malé a stredné stavebné tímy. Spá
 ## 6. Dátové entity
 
 - `profiles` — profil prihláseného používateľa;
-- `projects` — stavebný objekt;
-- `project_members` — členstvo a rola v projekte;
+- `projects` — stavebný objekt; vlastníctvo určuje `owner_id`;
+- `project_workers` — členstvo pracovníka, stav schválenia a väzba na jeho Auth identitu;
 - `diary_entries` — denné záznamy;
 - `attachments` — fotografie a dokumenty;
 - `receipts` — účtenky a rozpoznané údaje;
-- `worker_invites` — jednorazové QR pozvánky;
-- `material_requests` — požiadavky pracovníkov;
-- `sync_operations` — lokálny rad neodoslaných zmien.
+- `project_worker_invites` — jednorazové QR pozvánky s platnosťou 15 minút;
+- `material_requests` a `material_request_items` — požiadavky a ich položky;
+- SQLite `outbox` — lokálny rad neodoslaných zmien, nie serverová tabuľka.
 
 ## 7. Mimo rozsahu prvej verzie
 
@@ -120,4 +122,4 @@ Kompletné účtovníctvo, mzdy, BIM, verejné ponuky práce, automatické objed
 
 ## 8. Definícia dokončenia
 
-MVP je dokončené, keď kritické scenáre UC-01 až UC-05 fungujú s rolami a RLS, automatizované testy prejdú, Android build sa vytvorí bez chyby a manuálny test na dvoch používateľských účtoch nepotvrdí únik dát medzi projektmi.
+Odovzdanie kódu vyžaduje úspešné lokálne kontroly a doložené výsledky. Pred nasadením treba vykonať aj M01–M06 na samostatnom prostredí. Android export overuje bundling, nie inštaláciu APK ani správanie na telefóne.

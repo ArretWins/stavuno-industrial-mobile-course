@@ -30,6 +30,8 @@ If documents conflict, stop and ask the project owner which requirement wins. Do
 
 ## Validation
 
+Use the [command table](./README.md#kontrola-kvality) and [acceptance matrix](./ACCEPTANCE.md). The local database suite does not require credentials, Docker or a hosted Supabase project.
+
 Run the smallest relevant tests while iterating. Before declaring a step complete, run:
 
 ```bash

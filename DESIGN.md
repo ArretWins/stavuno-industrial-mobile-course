@@ -137,6 +137,20 @@ Konflikt sa v MVP rieši pravidlom poslednej potvrdenej zmeny pri bežných text
 
 ## 9. Testovacia stratégia
 
+[Akceptačná matica](./ACCEPTANCE.md) mapuje FR-01 až FR-13 na lokálne testy a pri externých závislostiach na manuálny scenár. Spustiteľné kontroly sú v [README](./README.md#kontrola-kvality).
+
+### Kontrakty MVP
+
+| Oblasť | Implementačný kontrakt |
+| --- | --- |
+| Projekt | PostgreSQL `projects.id` a `owner_id` sú UUID; `status` je enum `active\|archived`; názov a lokalita 1–160 znakov. |
+| Denník a synchronizácia | `diary_entries.id` je text, `project_id` UUID, `log_date` SQL date. SQLite `outbox.id` je textový primárny kľúč; payload je JSON uložený ako text. |
+| Účtenka | `receipts.purchase_date` je date; `total_amount_cents` je nezáporný bigint v EUR; polia môžu byť prázdne v návrhu. OCR navrhuje hodnoty cez Edge Function `process-receipt-ocr`, nie je podmienkou ručného uloženia. |
+| Pozvánka | RPC `create_worker_invite(uuid)` vydá token pre aktívny vlastný projekt; DB uchová hash a expiráciu ako timestamptz. RPC `join_project_as_worker(text,text,text,text)` vráti UUID čakajúceho pracovníka; token je platný 15 minút a najviac raz. |
+| Požiadavka | RPC `create_material_request(uuid,date,text,jsonb)` vráti textové ID. Vyžaduje aktívne členstvo volajúceho a 1–50 položiek s kladným množstvom. |
+
+Zdroj pravdy pre typy, indexy a oprávnenia je [SQL schéma](./supabase/migrations), nie odvodená schéma v pravidlách agenta.
+
 - jednotkové testy doménových pravidiel;
 - testy validácie formulárov a transformácie dát;
 - testy SQL migrácií a prítomnosti RLS politík;
@@ -147,7 +161,7 @@ Konflikt sa v MVP rieši pravidlom poslednej potvrdenej zmeny pri bežných text
 
 ## 10. Otvorené rozhodnutia po MVP
 
-- poskytovateľ OCR a jeho cena;
+- produkčné náklady OCR; existujúci adaptér používa Azure Document Intelligence a bez konfigurácie sa použije ručný vstup;
 - pravidlá archivácie a retenčná lehota dokumentov;
 - platené funkcie a limity bezplatnej verzie;
 - publikovanie v Google Play;

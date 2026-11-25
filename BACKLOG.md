@@ -6,7 +6,7 @@ Tento dokument prepája obchodný cieľ produktu s implementačnými úlohami. S
 
 **Cieľ:** Stavbyvedúci a pracovníci majú jedno dôveryhodné miesto pre denný priebeh stavby, fotografie, výdavky a materiálové požiadavky aj pri nestabilnom internete.
 
-**Merateľný výsledok MVP:** stavbyvedúci vytvorí projekt, zaznamená pracovný deň a výdavok, pripojí pracovníka cez jednorazový QR kód a prijme jeho požiadavku na materiál bez úniku údajov medzi projektmi.
+**Merateľný cieľ demo:** do 15 minút na vopred nastavenom testovacom prostredí vytvoriť 1 projekt, 1 denný zápis, 1 účtenku a prijať 1 požiadavku od pracovníka schváleného cez jednorazový QR kód. Druhý stavbyvedúci vidí 0 údajov cudzieho projektu. Je to cieľ demo, nie nameraná metrika.
 
 **Stav:** implementované a automatizovane overované; reálne dvojzariadeniové a produkčné overenie zostáva manuálnou release bránou.
 
@@ -21,7 +21,7 @@ Ako stavbyvedúci sa chcem bezpečne registrovať, prihlásiť a obnoviť heslo,
 - neplatné údaje nevytvoria lokálnu náhradnú reláciu;
 - obnova hesla odošle e-mail na nakonfigurovanú recovery stránku;
 - chýbajúca Supabase konfigurácia skončí bezpečnou chybou;
-- relácia sa uloží do bezpečného klientského úložiska podporovaného Supabase SDK.
+- relácia prežije reštart cez React Native AsyncStorage; nejde o šifrovaný trezor.
 
 **Tasks**
 
@@ -40,12 +40,12 @@ Ako stavbyvedúci chcem vytvoriť a vybrať stavebný projekt, aby boli všetky 
 
 - nový projekt sa po vytvorení zobrazí vlastníkovi;
 - používateľ bez členstva projekt nevidí;
-- odstránenie alebo archivácia vyžaduje vedomé potvrdenie;
+- odstránenie vyžaduje potvrdenie; archivácia sa uloží cez editor projektu;
 - projektové dáta sú chránené RLS politikami.
 
 **Tasks**
 
-- T-02.1: navrhnúť tabuľky `projects` a `project_members`;
+- T-02.1: navrhnúť vlastníctvo v `projects` a členstvo v `project_workers`;
 - T-02.2: vytvoriť projektový repository layer;
 - T-02.3: implementovať zoznam a editor projektov;
 - T-02.4: overiť izoláciu projektov databázovými testami.

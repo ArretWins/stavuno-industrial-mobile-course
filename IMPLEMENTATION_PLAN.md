@@ -8,6 +8,19 @@
 
 **Použitie:** vykonateľný plán pre človeka alebo LLM agenta. Neudeľuje povolenie na produkčný deploy, zmenu živej databázy ani prácu s produkčnými tajomstvami.
 
+Kroky 1–8 nižšie sú míľniky už preneseného prototypu, nie pokyn prerobiť celý systém v jednom behu ani tvrdenie, že vznikol od nuly. Pri ďalšej zmene sa schvaľuje iba jeden samostatný beh s konkrétnym AC.
+
+### Odovzdanie: malé kroky pre jednotlivé behy
+
+Vstupný bod je existujúci kurzový baseline `dcca442`. Každý riadok je samostatný beh; ďalší sa začne po kontrole výstupu predchádzajúceho.
+
+| Beh | Vstup | Rozsah zmeny | Kritérium ukončenia / príkaz |
+| --- | --- | --- | --- |
+| S1 | Baseline a SPEC | `ACCEPTANCE.md`, SPEC, DESIGN: zosúladiť názvy a pokryť FR-01 až FR-13. | Každá FR má AC a dôkaz; `git diff --check`. |
+| S2 | AC-14, AC-15 | Pridať lokálnu DB regresiu a migráciu iba pre jednorazovosť pozvánky. | Prvé použitie prejde, druhé a expirované nie; `npm test -- tests/course-rls.test.ts`. |
+| S3 | Hotový lokálny DB fixture z S2 | V rovnakom teste doplniť AC-04, AC-13, AC-16, AC-17 pre prístupy a schválenie. | Vlastník vidí dve požiadavky, každý pracovník jednu, cudzí účet nevidí projekt; `npm run test:db`. |
+| S4 | S1–S3 | Spustiť kontroly z README, potvrdiť dôkazy a zaznamenať neoverené scenáre. | `npm run validate`, build portálu a Android export; M01–M06 evidovať samostatne. |
+
 ## Pravidlá vykonávania
 
 1. Pred zmenou prečítať schválené dokumenty a skontrolovať pracovný strom.

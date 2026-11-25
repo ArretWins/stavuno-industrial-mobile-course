@@ -9,6 +9,7 @@
     "build:worker-portal": "tsx scripts/build-worker-portal.ts",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
+    "test:db": "vitest run tests/course-rls.test.ts migration",
     "lint:translations": "tsx scripts/check-translations.ts",
     "lint:copy": "tsx scripts/check-copy.ts",
     "validate": "npm run typecheck && npm run lint:translations && npm run lint:copy && npm test",
